@@ -1,0 +1,116 @@
+Weddcall — Wedding RSVP HTML5 Template
+=======================================
+
+Version 2.0 — 2026
+------------------
+
+A full rebuild on a modern stack, plus four pages the site was missing. The
+design is unchanged: the same layout, colours, type and spacing, checked
+block by block against version 1 on all eight original pages at desktop,
+tablet and phone widths — measured, not eyeballed. Every grid column keeps
+its box, every image fills the same frame, and the same element is on top
+of every block.
+
+
+FOUR NEW PAGES, AND THE ENTRY PAGE
+- index.html is now the entry page (the live demo always served it that
+  way); home.html stays and redirects to it, so old links still land.
+- our-story.html — how they met, the first date, the proposal and the
+  wedding, the two families, and a gallery. The home page's "Story Of Love"
+  and the three Love Story "Read More" buttons link to it; in version 1
+  they reloaded the page.
+- travel.html — the day's timetable, getting there by car, train and air,
+  four places to stay, and what to wear / children / dietary needs. The
+  "we're happy" and "travel again" cards link to it.
+- registry.html — three ways to give, how it works, and a form to say what
+  you chose, in the RSVP form's own styling.
+- single-post.html — a full blog post with the blog's sidebar. Every "Read
+  More" on the home page and the blog, and the sidebar's latest posts, open
+  it; the categories and tags open the blog.
+
+That is 41 links with an empty href — the kind that reload whatever page
+you are on — now resolving, plus the Pages menu's Groomsmen and Bridesmaid
+entries, which pointed nowhere although both pages exist.
+
+
+FRAMEWORK
+- Rebuilt on Bootstrap 5.3 (was Bootstrap 4.0): navbar, dropdown, grid and
+  forms all use current markup.
+- jQuery 2.0, Owl Carousel, Magnific Popup, The Final Countdown, fullPage.js,
+  counterUp and instafeed are gone. The template ships one plain JavaScript
+  file (js/main.js, 22 KB) covering the hero slider, the countdown, the
+  gallery lightbox, the full-screen gallery, the scrolled navbar, form
+  validation and back-to-top. No build step, no dependencies.
+- The inline <script> blocks are gone; the hero's slider settings
+  travel on the element as a data attribute.
+- Font Awesome 4.7 → 6.7, and the Elegant Icons font ships only with the
+  five glyphs the pages use.
+- JavaScript payload 401 KB → 104 KB. Fonts 2.1 MB → 548 KB.
+- The NetBeans project folder (nbproject/) that shipped in version 1 is gone.
+
+
+FIXED FROM VERSION 1
+- The countdown runs. Version 1 counted to 1 June 2018 and has shown an
+  empty band ever since. A date in the past now rolls forward a year at a
+  time, so the clock counts to the next 1 June out of the box; set your own
+  date in the data-enddate attribute.
+- Every inner page's hero opened on a photograph that did not exist
+  (Image1.jpg; the file is Image1.jpeg), so the first slide was blank.
+- The Bride and Groomsman blocks: the portrait painted OVER the text at
+  every desktop width, so the first half of each line sat under the pink
+  tint. The text now sits above the portrait.
+- The event cards on the Wedding Events band sat under the band's dark
+  tint. They are on top of it, as designed.
+- A Google Maps API key was hard-coded in events.html and shipped to every
+  buyer — and had stopped working, so the map showed Google's error box. It
+  is removed; the map is a keyless embed of the same place.
+- An Instagram access token was hard-coded in js/custom.js. Removed with the
+  script (the feed it called has been closed for years).
+- Open Sans and Great Vibes were fetched from Google Fonts on every page
+  load. Both ship self-hosted as woff2.
+- The footer carries the copyright line the live demo has shown since 2021.
+
+
+THE GALLERY
+- The nine full-screen photographs, the dots on the right with their
+  tooltips, the scroll-snapping from one to the next, and the arrow keys
+  all work as before — with CSS scroll-snap instead of fullPage.js.
+
+
+ACCESSIBILITY
+- The 22 images that had no alt text have one; the logo announces the
+  couple's names.
+- Every form field has a label; the RSVP and wishes forms validate before
+  they submit and show a confirmation instead of posting to nowhere.
+- The menu toggle is a real button with a label and a state. The back-to-top
+  control is a button.
+- The lightbox traps focus while open, closes on Escape and steps with the
+  arrow keys.
+
+
+TITLES AND DESCRIPTIONS
+- All eight pages carried the identical title "Weddcall", no meta
+  description and no language attribute. Each page now has its own title
+  and description, and lang="en".
+
+
+FILES
+- index.html (+ home.html redirect), events.html, RSVP.html, gallery.html,
+  bridesmaid.html, groomsmen.html, blog.html, wishes.html, our-story.html,
+  travel.html, registry.html, single-post.html
+- css/bootstrap.min.css, css/fontawesome.min.css, css/bs4-compat.css,
+  css/style.css, css/gallery.css (gallery.html only)
+- js/bootstrap.bundle.min.js, js/main.js
+- fonts/ (Open Sans, Great Vibes, Elegant Icons), webfonts/ (Font Awesome 6)
+- images/
+
+
+Version 1.0
+-----------
+- Initial release.
+
+
+LICENSE
+-------
+See License.txt. Keep the "Designed by ThemeVault" credit in the footer
+unless you hold a licence that removes it.

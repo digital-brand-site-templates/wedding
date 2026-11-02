@@ -8,3 +8,4 @@ Static website templates for the Wedding category.
 
 Preview gallery: https://digital-brand-site-templates.github.io/wedding/
 
+- [Wedd-call](wedd-call/)

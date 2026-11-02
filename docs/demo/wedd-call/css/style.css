@@ -1,0 +1,2089 @@
+/*
+Template Name: Weddcall
+File Name: style.css
+Author Name: ThemeVault
+Author URI: https://www.themevault.net/
+License URI: https://www.themevault.net/license/
+Version: 2.0
+*/
+
+/* ==========================================================================
+   1. Design tokens — taken from the ORIGINAL's own palette, not invented
+   ========================================================================== */
+:root {
+    --tv-accent: #fc4c4c;
+    --tv-ink: #222222;
+    --tv-white: #fff;
+}
+
+/* ==========================================================================
+   2. Fonts — self-hosted.
+
+   v1 fetched Open Sans (400/600/700/800) and Great Vibes from Google Fonts
+   on every page load. Both ship here as woff2, latin and latin-ext, so the
+   template renders the same with no third-party request. The icon glyphs
+   the pages use — the hamburger, the calendar and folder on the blog, the
+   two triangles — come from ElegantIcons, shipped as the one woff the
+   template used; the other 350 glyphs' rules are not carried.
+   ========================================================================== */
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/opensans-400-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/opensans-400-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/opensans-600-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/opensans-600-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/opensans-700-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/opensans-700-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/opensans-800-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/opensans-800-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Great Vibes"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/greatvibes-400-latin.woff2") format("woff2"); }
+@font-face { font-family: "ElegantIcons"; font-style: normal; font-weight: 400; font-display: block; src: url("../fonts/ElegantIcons.woff") format("woff"); }
+.arrow_triangle-up, .arrow_triangle-down, .icon_menu, .icon_folder-open_alt, .icon_calendar {
+    font-family: "ElegantIcons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+.arrow_triangle-up:before { content: "\42"; }
+.arrow_triangle-down:before { content: "\43"; }
+.icon_menu:before { content: "\61"; }
+.icon_folder-open_alt:before { content: "\6e"; }
+.icon_calendar:before { content: "\e023"; }
+
+/* ==========================================================================
+   3. Base — only what the port itself needs. v1 base rules (html, body,
+   headings, links) are ported verbatim in section 4.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+/* v1 removed every focus outline. Keyboard users get one back, only when
+   the focus came from a keyboard. */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid var(--tv-accent) !important;
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   4. Components - ported from v1's stylesheets in the order the pages loaded
+   them (owl.theme.default, owl.carousel, style, responsive), with the
+   Bootstrap 4 utilities renamed for Bootstrap 5. See _port-css.mjs.
+   ========================================================================== */
+/**
+ * Owl Carousel v2.2.1
+ * Copyright 2013-2017 David Deutsch
+ * Licensed under  ()
+ */
+/*
+ * 	Default theme - Owl Carousel CSS File
+ */
+.owl-theme .owl-nav {
+  margin-top: 10px;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; }
+  .owl-theme .owl-nav [class*='owl-'] {
+    color: #FFF;
+    font-size: 14px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px; }
+    .owl-theme .owl-nav [class*='owl-']:hover {
+      color: #FFF;
+      text-decoration: none; }
+  .owl-theme .owl-nav .disabled {
+    opacity: 0.5;
+    cursor: default; }
+
+.owl-theme .owl-nav.disabled + .owl-dots {
+  margin-top: 10px; }
+
+.owl-theme .owl-dots {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent; }
+  .owl-theme .owl-dots .owl-dot {
+    display: inline-block;
+    zoom: 1;
+    *display: inline; }
+    .owl-theme .owl-dots .owl-dot span {
+      width: 10px;
+      height: 10px;
+      margin: 5px 7px;
+      background: #D6D6D6;
+      display: block;
+      -webkit-backface-visibility: visible;
+      transition: opacity 200ms ease;
+      border-radius: 30px; }
+    .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+      background: #869791; }
+
+/**
+ * Owl Carousel v2.2.1
+ * Copyright 2013-2017 David Deutsch
+ * Licensed under  ()
+ */
+/*
+ *  Owl Carousel - Core
+ */
+.owl-carousel {
+  display: none;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1; }
+  .owl-carousel .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    -moz-backface-visibility: hidden;
+    /* fix firefox animation glitch */ }
+  .owl-carousel .owl-stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0; }
+  .owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px); }
+  .owl-carousel .owl-wrapper,
+  .owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0); }
+  .owl-carousel .owl-item {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; }
+  .owl-carousel .owl-item img {
+    display: block;
+    width: 100%; }
+  .owl-carousel .owl-nav.disabled,
+  .owl-carousel .owl-dots.disabled {
+    display: none; }
+  .owl-carousel .owl-nav .owl-prev,
+  .owl-carousel .owl-nav .owl-next,
+  .owl-carousel .owl-dot {
+    cursor: pointer;
+    cursor: hand;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-carousel.owl-loaded {
+    display: block; }
+  .owl-carousel.owl-loading {
+    opacity: 0;
+    display: block; }
+  .owl-carousel.owl-hidden {
+    opacity: 0; }
+  .owl-carousel.owl-refresh .owl-item {
+    visibility: hidden; }
+  .owl-carousel.owl-drag .owl-item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-carousel.owl-grab {
+    cursor: move;
+    cursor: grab; }
+  .owl-carousel.owl-rtl {
+    direction: rtl; }
+  .owl-carousel.owl-rtl .owl-item {
+    float: right; }
+
+/* No Js */
+.no-js .owl-carousel {
+  display: block; }
+
+/*
+ *  Owl Carousel - Animate Plugin
+ */
+
+/*
+ * 	Owl Carousel - Auto Height Plugin
+ */
+.owl-height {
+  transition: height 500ms ease-in-out; }
+
+/*
+ * 	Owl Carousel - Lazy Load Plugin
+ */
+
+/*
+ * 	Owl Carousel - Video Plugin
+ */
+
+/* FONTS*/
+
+/*font-family: 'Great Vibes', cursive;*/
+
+/*font-family: 'Open Sans', sans-serif;*/
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-size:13px;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+a, button {
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+a {
+    color: inherit;
+}
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    outline: none !important;
+    text-decoration: none;
+}
+button:focus {
+    outline:none;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn.focus:active, .btn:active:focus, .btn:focus {
+    outline:none;
+    outline-offset:none;
+}
+ul , li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/**::-moz-selection {
+    background-color: #fc328a;
+    color: #ffffff;
+}
+
+::selection{
+    background-color: #fc328a;
+    color: #ffffff;
+}*/
+/*typography*/
+body {
+    margin: 0;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    background-color: #fff;
+}
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+    padding: 0;
+}
+/*End typography*/
+
+/*Spacing Value*/
+.tv-offspace-top-20 
+{
+    margin-top:20px;
+}
+.tv-offspace-top-30 {
+    margin-top: 30px;
+}
+.tv-offspace-top-40 {
+    margin-top: 40px;
+}
+.tv-offspace-top-50 {
+    margin-top: 50px;
+}
+.tv-offspace-bottom-20
+{
+    margin-bottom:20px;
+}
+.tv-offspace-bottom-30
+{
+    margin-bottom: 30px;
+}
+.tv-offspace-bottom-40
+{
+    margin-bottom: 40px;    
+}
+.tv-offspace-bottom-50
+{
+    margin-bottom: 50px;
+}
+/*Width-100*/
+.width-100
+{
+    width:100%;
+}
+/*Padding-0*/
+.padding-0{
+    padding:0;
+}
+/*Section Padding*/
+.tv-section-padding{
+    padding-top: 80px;
+}
+.tv-section-padding-70 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.tv-section-footer-padding
+{
+    padding-top: 40px;
+}
+.tv-padding-right
+{
+    padding-right:50px;
+}
+.tv-padding-left{
+    padding-left:50px;
+}
+/*Section Padding End Here*/
+
+/*Common CSS*/
+.tv-home-section
+{
+    width: 100%;
+    position: relative;
+    margin:0 auto;
+    background: #ffffff;
+}
+.tv-fixed-img {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+/*End Common CSS*/
+
+/*Banner CSS*/
+.tv-banner-image
+{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    min-height: 700px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.tv-banner-image:before
+{
+    background:rgba(0,0,0,0.5);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    bottom: 0;
+    left: 0;
+    content: "";
+}
+.owl-prev {
+    border: 0 solid black;
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.owl-next {
+    border: 0 solid black;
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#tv-main-banner .owl-prev {
+    left:20px;
+}
+#tv-main-banner .owl-next {
+    right:20px;
+}
+#tv-main-banner .owl-prev img
+{
+    width:40px;
+}
+#tv-main-banner .owl-next img
+{
+    width:40px;
+}
+#tv-main-banner .owl-prev i, .owl-next i {
+    height: 50px;
+    opacity: 1;
+    transition: all 0.3s ease 0s;
+    width: 50px;
+    z-index: 111;
+}
+#tv-main-banner .owl-nav {
+    margin:0;
+}
+.tv-banner-info {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+}
+.tv-banner-info h1 {
+    color: #ffffff;
+    font-family: "Great Vibes",cursive;
+    font-size: 6rem;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+.tv-banner-info h4 {
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.8rem;
+    letter-spacing: 10px;
+    margin: 0;
+    padding: 12px 20px;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 10;
+}
+.tv-save-date
+{
+    border-radius: 50%;
+    height:300px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: all 1s ease-in-out 2.3s;
+    width:300px;
+    bottom: -185px;
+    opacity: 1;
+    z-index: 50;
+    text-align: center;
+}
+.tv-save-date::after {
+    background-color: rgba(255,76,76, 0.7);
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.tv-save-date::before, .tv-save-date::after {
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    z-index: -1;
+}
+.tv-save-date::before {
+    animation: 1s ease 0s normal none infinite running save-the-date-pulse;
+    background-color: rgba(255,76,76, 0.3);
+    height: 110%;
+    left: -5%;
+    top: -5%;
+    width: 110%;
+}
+@-webkit-keyframes save-the-date-pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(0.95, 0.95, 0.95);
+        transform: scale3d(0.95, 0.95, 0.95);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes save-the-date-pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(0.95, 0.95, 0.95);
+        transform: scale3d(0.95, 0.95, 0.95);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+.tv-save-date > h4 {
+    color: #ffffff;
+    font-family: "Great Vibes", cursive;
+    font-size: 3rem;
+    letter-spacing: 3px;
+    margin-top: 40px;
+}
+.tv-save-date span {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+/*End Banner CSS*/
+
+/*Navigation CSS*/
+.tv-menu {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 15px 20px !important;
+    position: relative;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:#ffffff;
+}
+#tv-wedding-menu .dropdown-toggle::after {
+    border-color: -moz-use-text-color transparent;
+    border-style: solid solid none;
+    border-width: 0.3em 0.3em 0;
+    content: "";
+    display: inline-block;
+    height: 0;
+    vertical-align: middle;
+    width: 0;
+    margin-left:0;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color:#ffffff;
+}
+
+#primary-navbar.affix{
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    z-index: 998;
+    width: 100%;
+    opacity: 0.97;
+    box-shadow: 0 10px 14px -10px rgba(0, 0, 0, 0.2);
+}
+#tv-wedding-menu .dropdown-menu {
+    background-color: #222222;
+    border:none;
+    border-radius: 0;
+    color: #212529;
+    font-size: 1rem;
+    min-width: 14rem;
+    padding:0;
+    margin: 0.5rem 0 0;
+}
+#tv-wedding-menu .dropdown-item {
+    color: #ffffff;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.dropdown-divider {
+    margin:0;
+}
+#tv-wedding-menu .dropdown-item:focus, #tv-wedding-menu .dropdown-item:hover {
+    background-color: #ffffff;
+    text-decoration: none;
+    color:#222222;
+}
+#tv-wedding-menu .tv-menu::after {
+    background: none repeat scroll 0 0 #ffffff;
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: all 200ms ease-out 0s;
+    width: 0;
+}
+.navbar {
+    background: none repeat scroll 0 0 rgba(255, 76, 76, 0.8);
+}
+#tv-wedding-menu .tv-menu:hover::after {
+    width: 20px;
+}
+#tv-wedding-menu .tv-menu:hover {
+    color: #ffffff;
+}
+#tv-wedding-menu i {
+    vertical-align: middle;
+}
+/*End Navigation CSS*/
+
+/*Welcome CSS*/
+.tv-welcome-img
+{
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.tv-section-title {
+    text-align: center;
+    margin-bottom:40px;
+}
+.tv-section-title > h4 {
+    font-size: 2rem;
+    font-family: "Great Vibes", cursive;
+    letter-spacing: 3px;
+}
+.tv-section-title h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color:#fc4c4c;
+}
+.tv-welcome-content
+{
+    text-align: center;
+}
+.tv-welcome-content p {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0 auto 0;
+    width: 62%;
+    background: none repeat scroll 0 0 #fc4c4c;
+    padding: 40px 60px;
+    position: relative;
+    transition: all 200ms ease-out 0s;
+    color:#ffffff;
+}
+.tv-welcome-content p::after {
+    border: 2px dashed #ffffff;
+    content: "";
+    height: calc(100% - 40px);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 40px);
+}
+/*End Welcome CSS*/
+
+/*Bride CSS*/
+.tv-bride-img
+{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.tv-bride-bg
+{
+    background: #fc4c4c;
+}
+#tv-bride-block , #tv-groomsman-block{
+    overflow: hidden;
+    position: relative;
+}
+#tv-bride-block .tv-bride-img::after , #tv-groomsman-block .tv-bride-img::after{
+    background: none repeat scroll 0 0 rgba(252,76,76, 0.7);
+    content: "";
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+#tv-bride-block .tv-bride-img {
+    left: 0;
+    margin-top: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#tv-groomsman-block .tv-bride-img {
+    left: inherit;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 40px;
+}
+#tv-bride-block .container-fluid , #tv-groomsman-block .container-fluid{
+    background: none repeat scroll 0 0 #fc4c4c;
+    padding-left: 0;
+    padding-right: 0;
+}
+#tv-bride-block .tv-bride-info , #tv-groomsman-block .tv-bride-info{
+    padding: 0 60px;
+}
+#tv-bride-block .tv-bride-img img , #tv-groomsman-block .tv-bride-img img{
+    height: auto;
+    width: 600px;
+}
+#tv-bride-block .tv-bride-gallery-item , #tv-groomsman-block .tv-bride-gallery-item{
+    height: 300px;
+    overflow: hidden;
+    padding-right: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+#tv-bride-block .tv-bride-gallery-item img , #tv-groomsman-block .tv-bride-gallery-item img{
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+}
+.tv-banner-section-title > h4 {
+    font-size: 2rem;
+    font-family: "Great Vibes", cursive;
+    letter-spacing: 3px;
+    color:#ffffff;
+}
+.tv-banner-section-title h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color:#ffffff;
+}
+.tv-bride-details p {
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+/*End Bride CSS*/
+
+/*Love Story CSS*/
+.tv-lovestory-block
+{
+    position: relative;
+}
+.tv-lovestory-block::before {
+    background: none repeat scroll 0 0 #fc4c4c;
+    bottom:335px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 20px;
+    width: 1px;
+}
+.tv-lovestory-details::before {
+    background: none repeat scroll 0 0 #ececec;
+    border: 5px solid #fc4c4c;
+    border-radius: 50%;
+    content: "";
+    height:19px;
+    margin-left: 30px;
+    position: absolute;
+    top: 5px;
+    width:19px;
+}
+.tv-lovestory-details {
+    position: relative;
+}
+.tv-lovestory-details > h4 {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+.tv-lovestory-details > p {
+    letter-spacing: 1px;
+}
+.tv-lovestory-details > p {
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.tv-link-button {
+    border: 3px double #fc4c4c;
+    color: #fc4c4c;
+    font-weight: 600;
+    line-height: 40px;
+    padding: 5px 15px;
+}
+.tv-link-button:hover
+{
+    border-color: #222222;
+    color:#222222;
+}
+.tv-left-side-circle::before
+{
+    left: -54px;
+}
+.tv-right-side-circle::before
+{
+    right:-25px;
+}
+/*End Love Story CSS*/
+
+/*Clock Banner CSS*/
+.tv-clock-banner
+{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-attachment: fixed;
+}
+.tv-clock-banner:before
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left:0;
+    content:"";
+    background:rgba(0,0,0, 0.7);
+}
+.tv-clock-block
+{
+    position: relative;
+}
+.counter-box-5 .counter-box {
+    display: inline-block;
+    padding: 0;
+    position: relative;
+    vertical-align: top;
+    width:10%;
+}
+.counter-box-5 .counter-box .number {
+    color: #fc4c4c;
+    display: block;
+    font-size:40px;
+    font-weight:800;
+    letter-spacing: 2px;
+    line-height: 80px;
+}
+.counter-box-5 .counter-box span {
+    color: #fc4c4c;
+    font-size:15px;
+    letter-spacing:2px;
+    line-height: 28px;
+    text-transform: uppercase;
+    font-weight:800;
+}
+/*End Clock Banner CSS*/
+
+/*People CSS*/
+.tv-people-details img {
+    border: 5px solid #fc4c4c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out 0.1s;
+    width: 100px;
+}
+.tv-people-details .media-body {
+    padding: 0 30px;
+}
+.tv-people-details .media-body > h4 {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.tv-people-details .media-body > h5
+{
+    font-weight: 600;
+    letter-spacing: 1px;
+    color:#707070;
+    font-size: 1rem;
+    margin:10px 0;
+}
+.tv-people-details .media-body > p
+{
+    letter-spacing: 1px;
+}
+.tv-people-details
+{
+    margin-bottom: 30px;
+}
+/*End People CSS*/
+
+/*Events CSS*/
+.tv-events-banner
+{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-attachment: fixed;
+}
+.tv-events-banner:before
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    left:0;
+    content:"";
+    background:rgba(0,0,0, 0.7);
+}
+.tv-events-block {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 10px;
+}
+.tv-banner-section-title {
+    display: inline-block;
+    margin-bottom: 40px;
+    position: relative;
+}
+.tv-events-info
+{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    text-align: center;
+}
+.tv-events-info > h4 {
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fc4c4c;
+}
+.tv-events-info > p {
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+/*End Events CSS*/
+
+/*Image Effect*/
+.tv-effct-image
+{
+    position: relative;
+    overflow: hidden;
+}
+.tv-effct-image::before{
+    position: absolute;
+    left:20px;
+    right:20px;
+    top:20px;
+    bottom:20px;
+    border:1px solid #fc4c4c;
+    background: rgba(255, 255, 255,0.8);
+    content:"";
+    transform: scale3d(1.4,1.4,1);
+    transition: all 0.1s linear 0s;
+    z-index: 1;
+    opacity: 0;
+}
+.tv-effct-image::after {
+    color: #fc4c4c;
+    content: "+";
+    font-size:40px;
+    line-height: 0;
+    font-weight: 100;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease 0s;
+    width: 10px;
+    z-index: 1;
+}
+.tv-effct-image:hover::before {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+}
+.tv-effct-image:hover::after {
+    opacity: 1;
+}
+/*End Image Effect*/
+
+/*Gallery CSS*/
+.tv-gallery-block
+{
+    margin-bottom: 20px;
+}
+#blog-section .blog-card-body {
+    padding: 30px;
+}
+.tv-blog-block
+{
+    background: none repeat scroll 0 0 #fff3f1;
+    margin-bottom: 20px;
+}
+.tv-blog-details {
+    padding: 20px;
+}
+.tv-blog-details > span {
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fc4c4c;
+}
+.tv-blog-details > h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+.tv-blog-details .tv-block-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    line-height: 30px;
+    color:#fc4c4c;
+}
+.tv-blog-details > p {
+    letter-spacing: 1px;
+}
+.tv-blog-details > p {
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+/*End Gallery CSS*/
+
+.tv-footer-banner
+{
+    padding:170px 0;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+.tv-footer-banner:before
+{
+    background:rgba(0,0,0,0.5);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    bottom: 0;
+    left: 0;
+    content: "";
+}
+
+.footer-head::before {
+    left: 10px;
+}
+.footer-head::before, .footer-head::after {
+    background: none repeat scroll 0 0 #e2dbe7;
+    border-radius: 100%;
+    content: "";
+    height: 8px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+}
+.footer-head::after {
+    right: 10px;
+}
+.footer-head {
+    background: none repeat scroll 0 0 #fc4c4c;
+    border-radius: 30px;
+    color: #e2dbe7;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.44em;
+    line-height: 12px;
+    margin-bottom: 40px;
+    padding: 10px 50px;
+    position: relative;
+}
+.tv-footer-body{
+    color: #e2dbe7;
+    font-size:7rem;
+    line-height: 90px;
+    margin-bottom: 40px;
+    font-family: 'Great Vibes', cursive;
+    position: relative;
+}
+.footer-foot {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    border: 2px dashed #fc4c4c;
+    border-radius: 60px;
+    color: #fc4c4c;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin: 0 auto;
+    padding: 15px 40px;
+    width: 300px;
+    position: relative;
+}
+
+#back-to-top {
+    background-color: #fc4c4c;
+    bottom: 25px;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    position: fixed;
+    right: 20px;
+    text-align: center;
+    transition: bottom 0.5s ease 0s;
+    width: 30px;
+    z-index:9;
+}
+
+/*Wishes CSS*/
+.tv-wishes-block {
+    border: 1px solid rgba(255,122,122, 1);
+    padding: 5rem 3rem 3rem;
+    position: relative;
+    text-align: center;
+    margin-top: 60px;
+}
+.tv-wishes-block img {
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+.tv-wishes-block img {
+    border-radius: 50px;
+    display: block;
+    width: 100px;
+}
+.tv-wishes-block > h4 {
+    font-weight: 600;
+    letter-spacing: 1px;
+    color:#fc4c4c;
+}
+.tv-wishes-block > p {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+/*End Wishes CSS*/
+
+/*Write Wishes CSS*/
+.tv-contact-form input {
+    border-radius: 0;
+    height: 40px;
+}
+.tv-contact-form textarea {
+    border-radius: 0;
+}
+.tv-submit {
+    background: none repeat scroll 0 0 transparent;
+    cursor: pointer;
+    line-height: 0;
+}
+.form-control:focus {
+    background-color: #fff;
+    border-color: #fc4c4c;
+    box-shadow: 0 0 0 0.2rem rgba(255,122,122, 0.25);
+    color: #495057;
+    outline: 0 none;
+}
+/*End Write Wishes CSS*/
+
+.tv-wedding-img img
+{
+    width: 400px;
+}
+
+/*Events CSS*/
+.tv-upcoming-info {
+    padding: 20px;
+    text-align: center;
+}
+.tv-upcoming-info > h4 {
+    color: #fc4c4c;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.tv-upcoming-info p {
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+.tv-upcoming-info strong
+{
+    color:#fc4c4c;
+}
+#map {
+    height: 500px;
+}
+/*End Events CSS*/
+
+/*Groomsmen CSS*/
+.tv-groomsmen-info , .tv-bridemaid-info {
+    padding:10px;
+    text-align: center;
+}
+.tv-groomsmen-info > h4 , .tv-bridemaid-info > h4 {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color:#fc4c4c;
+}
+.tv-groomsmen-info > p , .tv-bridemaid-info > p {
+    letter-spacing: 1px;
+}
+.tv-groomsmen-desc > h4 , .tv-bridemaid-desc > h4{
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    color:#fc4c4c;
+}
+.tv-groomsmen-desc > p , .tv-bridemaid-desc > p {
+    letter-spacing: 1px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+.tv-groomsmen-content , .tv-bridemaid-content
+{
+    border-top:1px solid #222222;
+    border-bottom:1px solid #222222;
+    padding:20px 0;
+    margin-bottom: 20px;
+}
+.tv-groomsmen-content p , .tv-bridemaid-content p {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+}
+/*End Groomsmen CSS*/
+
+/*Blog CSS*/
+.tv-innerblog-block
+{
+    margin-bottom:40px;
+}
+.tv-blog-title.text-center > h4 {
+    color: #fc4c4c;
+    font-family: "Great Vibes", cursive;
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+.tv-blog-meta > a {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-right:10px;
+}
+.tv-blog-meta > span
+{
+    font-weight: 600;
+    letter-spacing: 1px;
+    color:#fc4c4c;
+}
+.tv-blog-meta
+{
+    text-align: center;
+    margin-top: 20px;
+}
+.tv-blog-img
+{
+    margin-top: 50px;
+}
+.tv-blog-img > p {
+    letter-spacing: 1px;
+    margin: 20px 0;
+}
+.tv-search-widget input {
+    font-weight: 600;
+    height: 40px;
+    letter-spacing: 1px;
+}
+.tv-widget-title > h4 {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    position: relative;
+    color:#fc4c4c;
+    margin-top: 40px;
+
+}
+.tv-about-widget > p {
+    letter-spacing: 1px;
+}
+.tv-about-widget h5 {
+    font-family: "Great Vibes", cursive;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    margin-top: 20px;
+}
+.tv-widget-title > h4::before
+{
+    background-color: #fc4c4c;
+    bottom: -1.5rem;
+    content: "";
+    height: 1px;
+    left: 0;
+    opacity: 0.6;
+    position: absolute;
+    width: 100%;
+}
+.tv-categories-widget li {
+    border-bottom: 1px dashed #777;
+    display: block;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.tv-categories-widget a {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.tv-latest-media img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+.tv-latest-media .media-body
+{
+    padding: 0 20px;
+}
+.tv-latest-media h3 {
+    color: #fc4c4c;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 20px;
+    margin-bottom:5px;
+}
+.tv-post-date > a {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.tv-tags-widget a {
+    border: 1px solid rgba(119, 119, 119, 0.5);
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.7rem;
+    text-transform: capitalize;
+    transition: border-color 0.3s ease 0s;
+}
+.tv-tags-widget a:hover
+{
+    border-color: #fc4c4c;
+    color:#fc4c4c;
+}
+/*End Blog CSS*/
+
+/*Gallery CSS*/
+.inlove-fullpage-text {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    left: 10%;
+    padding: 30px;
+    position: relative;
+    top: 10%;
+    transform: translateY(-10%);
+    width: 30%;
+}
+.inlove-box h3 {
+    color: #fc4c4c;
+    font-family: "Great Vibes", cursive;
+    font-size: 3.5rem;
+}
+.inlove-box p {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+/*End Gallery CSS*/
+
+/*RSVP CSS*/
+.tv-rsvp-img
+{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border: 5px solid #e86c6c;
+    color: #fff;
+    padding: 50px 40px;
+    position: relative;
+    text-align: center;
+}
+.tv-rsvp-img::before {
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.tv-rsvp-img h3, .tv-rsvp-img p {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+.tv-rsvp-img .form {
+    margin-top: 35px;
+}
+.tv-rsvp-img h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+#rsvp-form input {
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 40px;
+    letter-spacing: 1px;
+    width: 100%;
+}
+.tv-rsvp-img > p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    text-transform: capitalize;
+}
+#rsvp-form textarea{
+    border-radius: 0;
+    width: 100%;
+    height:100px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+#rsvp-form select {
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('../images/Image62.png') 96% / 3.5% no-repeat #eee;
+}
+#rsvp-form .form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+#rsvp-form .form-group label {
+    align-items: center;
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 600;
+    justify-content: center;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.theme-btn {
+    background: none repeat scroll 0 0 transparent;
+    border: 3px double #ffffff;
+    border-radius: 0;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+#rsvp-form select::-ms-expand { 
+    display: none; /* remove default arrow in IE 10 and 11 */
+}
+/*End RSVP CSS*/
+
+/* Landscape phones and smaller */
+
+@media (min-width: 1199px) and (max-width: 1300px) 
+{
+}
+
+@media (max-width: 1199px) 
+{
+
+}
+
+@media (min-width:1000px) and (max-width:1100px)
+{
+    .tv-lovestory-block::before {
+        bottom: 280px;
+    }
+    .tv-effct-image::before {
+        left: 42px;
+        right: 42px;
+    }
+    .tv-wishes-block > p {
+        font-size: 0.85rem;
+    }
+    .inlove-fullpage-text {
+        width: 40%;
+    }
+}
+
+@media (min-width:992px) and (max-width:999px)
+{
+    .tv-effct-image::before {
+        left:35px;
+        right:35px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) 
+{
+    .navbar-toggler {
+        padding: 0.15rem 0.50rem;
+    }
+    .icon_menu {
+        font-size: 25px;
+        color: #ffffff;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: rgba(255,255,255,1);
+    }
+    .tv-section-title {
+        margin-bottom: 10px;
+    }
+    .tv-welcome-content p {
+        font-size: 0.85rem;
+        padding: 40px 45px;
+        width: 65%;
+    }
+    #tv-bride-block .tv-bride-info{
+        padding: 0 25px;
+    }
+    .tv-lovestory-block::before {
+        bottom: 375px;
+    }
+    .tv-link-button {
+        line-height: 60px;
+    }
+    #tv-groomsman-block .tv-bride-info {
+        padding: 0 25px;
+    }
+    .counter-box-5 .counter-box .number {
+        font-size:35px;
+        text-align: center;
+    }
+    .counter-box-5 .counter-box span {
+        font-size:12px;
+        text-align: center;
+    }
+    .counter-box-5 .counter-box {
+        width:20%;
+    }
+    #tv-wedding-menu .tv-menu::after {
+        display: none;
+    }
+    .tv-wishes-block > p {
+        font-size: 0.9rem;
+    }
+    .tv-submit {
+        line-height:0;
+    }
+    .inlove-fullpage-text {
+        width: 50%;
+    }
+}
+
+@media (min-width:600px) and (max-width: 767px) 
+{
+    .navbar-toggler {
+        padding: 0.15rem 0.50rem;
+    }
+    .icon_menu {
+        font-size: 25px;
+        color: #ffffff;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: rgba(255,255,255,1);
+    }
+    .tv-banner-info h4 {
+        line-height: 1.5;
+        font-size: 1.5rem;
+    }
+    .tv-banner-info h1 {
+        font-size: 4rem;
+    }
+    #tv-main-banner .owl-prev {
+        left: 0;
+        top:70%;
+        transform: none;
+    }
+    #tv-main-banner .owl-next {
+        right: 0;
+        top:70%;
+        transform: none;
+    }
+    .tv-welcome-content p {
+        padding: 40px 40px;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+    #tv-bride-block .tv-bride-info, #tv-groomsman-block .tv-bride-info {
+        padding: 20px 10px;
+    }
+    .tv-section-title > h4 {
+        font-size: 1.6rem;
+    }
+    .tv-padding-right {
+        padding-right:0;
+    }
+    .tv-padding-left {
+        padding-left:0px;
+    }
+    .tv-lovestory-block::before {
+        display: none;
+    }
+    .tv-lovestory-details::before {
+        display: none;
+    }
+    .tv-bride-img {
+        display: none;
+    }
+    .counter-box-5 .counter-box {
+        width:50%;
+    }
+    .counter-box-5 .counter-box .number {
+        font-size:30px;
+    }
+    .counter-box-5 .counter-box span {
+        font-size:12px;
+        text-align: center; 
+    }
+    .tv-people-details .media-body {
+        padding: 0 15px;
+    }
+    .tv-footer-body {
+        font-size: 5rem;
+    }
+    #tv-wedding-menu .tv-menu::after {
+        display: none;
+    }
+    .tv-groomsmen-desc > h4 {
+        line-height: 30px;
+    }
+    .tv-groomsmen-content p {
+        width: 100%;
+    }
+    .inlove-fullpage-text {
+        left: 10%;
+        margin: 0 auto;
+        top: 10%;
+        transform: translate(-10%, -10%);
+        width: 70%;
+    }
+    .tv-lovestory-details {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 599px) and (min-width: 501px)
+{
+
+}
+
+@media (min-width:501px) and (max-width:599px)
+{
+    .navbar-toggler {
+        padding: 0.15rem 0.50rem;
+    }
+    .icon_menu {
+        font-size: 25px;
+        color: #ffffff;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: rgba(255,255,255,1);
+    }
+    .tv-banner-info h4 {
+        line-height: 1.5;
+        font-size: 1.5rem;
+    }
+    .tv-menu {
+        padding: 8px 20px !important;
+    }
+    .tv-banner-info h1 {
+        font-size:4rem;
+    }
+    #tv-main-banner .owl-prev {
+        left: 0;
+        top:70%;
+        transform: none;
+    }
+    #tv-main-banner .owl-next {
+        right: 0;
+        top:70%;
+        transform: none;
+    }
+    .tv-welcome-content p {
+        padding: 40px 40px;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+    #tv-bride-block .tv-bride-info, #tv-groomsman-block .tv-bride-info {
+        padding: 20px 10px;
+    }
+    .tv-section-title > h4 {
+        font-size: 1.6rem;
+    }
+    .tv-padding-right {
+        padding-right:0;
+    }
+    .tv-padding-left {
+        padding-left:0px;
+    }
+    .tv-lovestory-block::before {
+        display: none;
+    }
+    .tv-lovestory-details::before {
+        display: none;
+    }
+    .tv-bride-img {
+        display: none;
+    }
+    .counter-box-5 .counter-box {
+        width:50%;
+    }
+    .counter-box-5 .counter-box .number {
+        font-size:30px;
+    }
+    .counter-box-5 .counter-box span {
+        font-size:12px;
+        text-align: center; 
+    }
+    .tv-people-details .media-body {
+        padding: 0 15px;
+    }
+    .tv-footer-body {
+        font-size: 5rem;
+    }
+    .tv-banner-info h4 {
+        width: 80%;
+    }
+    #tv-wedding-menu .tv-menu::after {
+        display: none;
+    }
+    .tv-groomsmen-desc > h4 {
+        line-height: 30px;
+    }
+    .tv-groomsmen-content p {
+        width: 100%;
+    }
+    .inlove-fullpage-text {
+        left: 10%;
+        margin: 0 auto;
+        top: 10%;
+        transform: translate(-10%, -10%);
+        width: 90%;
+    }
+    .tv-lovestory-details {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 500px) 
+{
+    .navbar-toggler {
+        padding: 0.15rem 0.50rem;
+    }
+    .icon_menu {
+        font-size: 25px;
+        color: #ffffff;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: rgba(255,255,255,1);
+    }
+    .tv-banner-info h4 {
+        line-height: 1.5;
+        font-size: 1.5rem;
+    }
+    .tv-banner-info h1 {
+        font-size:4rem;
+    }
+    #tv-main-banner .owl-prev {
+        left: 0;
+        top:70%;
+        transform: none;
+    }
+    #tv-main-banner .owl-next {
+        right: 0;
+        top:70%;
+        transform: none;
+    }
+    .tv-welcome-content p {
+        padding: 40px 40px;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+    #tv-bride-block .tv-bride-info, #tv-groomsman-block .tv-bride-info {
+        padding: 20px 10px;
+    }
+    .tv-section-title > h4 {
+        font-size: 1.6rem;
+    }
+    .tv-padding-right {
+        padding-right:0;
+    }
+    .tv-padding-left {
+        padding-left:0px;
+    }
+    .tv-lovestory-block::before {
+        display: none;
+    }
+    .tv-lovestory-details::before {
+        display: none;
+    }
+    .tv-bride-img {
+        display: none;
+    }
+    .counter-box-5 .counter-box {
+        width:50%;
+    }
+    .counter-box-5 .counter-box .number {
+        font-size:30px;
+    }
+    .counter-box-5 .counter-box span {
+        font-size:12px;
+        text-align: center; 
+    }
+    .tv-people-details .media-body {
+        padding: 0 15px;
+    }
+    .tv-footer-body {
+        font-size: 5rem;
+    }
+    .tv-banner-info h4 {
+        width: 80%;
+    }
+    #tv-wedding-menu .tv-menu::after {
+        display: none;
+    }
+    .tv-groomsmen-desc > h4 {
+        line-height: 30px;
+    }
+    .tv-groomsmen-content p {
+        width: 100%;
+    }
+    .inlove-fullpage-text {
+        left: 10%;
+        margin: 0 auto;
+        top: 10%;
+        transform: translate(-10%, -10%);
+        width: 90%;
+    }
+    .tv-lovestory-details {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 400px) 
+{
+    .navbar-toggler {
+        padding: 0.15rem 0.50rem;
+    }
+    .icon_menu {
+        font-size: 25px;
+        color: #ffffff;
+    }
+    .navbar-light .navbar-toggler {
+        border-color: rgba(255,255,255,1);
+    }
+    .tv-banner-info h4 {
+        line-height: 1.5;
+        font-size: 1.5rem;
+        width: 100%;
+    }
+    .tv-banner-info h1 {
+        font-size: 2.5rem;
+    }
+    #tv-main-banner .owl-prev {
+        left: 0;
+        top:70%;
+        transform: none;
+    }
+    #tv-main-banner .owl-next {
+        right: 0;
+        top:70%;
+        transform: none;
+    }
+    .tv-welcome-content p {
+        padding: 40px 40px;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+    #tv-bride-block .tv-bride-info, #tv-groomsman-block .tv-bride-info {
+        padding: 20px 10px;
+    }
+    .tv-section-title > h4 {
+        font-size: 1.6rem;
+    }
+    .tv-padding-right {
+        padding-right:0;
+    }
+    .tv-padding-left {
+        padding-left:0px;
+    }
+    .tv-lovestory-block::before {
+        display: none;
+    }
+    .tv-lovestory-details::before {
+        display: none;
+    }
+    .tv-bride-img {
+        display: none;
+    }
+    .counter-box-5 .counter-box {
+        width:50%;
+    }
+    .counter-box-5 .counter-box .number {
+        font-size:30px;
+    }
+    .counter-box-5 .counter-box span {
+        font-size:12px;
+        text-align: center; 
+    }
+    .tv-people-details .media-body {
+        padding: 0 15px;
+    }
+    .tv-footer-body {
+        font-size: 5rem;
+    }
+    #tv-wedding-menu .tv-menu::after {
+        display: none;
+    }
+    .tv-wishes-block {
+        padding: 5rem 1rem 3rem;
+    }
+    .tv-wedding-img img {
+        width: 300px;
+    }
+    .tv-groomsmen-desc > h4 {
+        line-height: 30px;
+    }
+    .tv-groomsmen-content p {
+        width: 100%;
+    }
+    .inlove-fullpage-text {
+        left: 10%;
+        margin: 0 auto;
+        top: 10%;
+        transform: translate(-10%, -10%);
+        width: 90%;
+    }
+    .tv-lovestory-details {
+        margin-bottom: 20px;
+    }
+}
+
+/* ==========================================================================
+   Weddcall — template-specific Bootstrap 5 shims.
+
+   The SHARED Bootstrap 4 -> 5 compatibility layer lives in
+   web/scripts/upgrade-qa/bs4-compat.css and is linked BEFORE style.css.
+   Only rules peculiar to THIS template belong here.
+   ========================================================================== */
+
+/* --- Back to top --------------------------------------------------------
+   v1 used an <a> hidden inline and faded in by jQuery past 100px; v2 uses a
+   <button>, so it needs the button reset. v1's own #back-to-top rule
+   (ported above) owns the look. */
+#back-to-top.tv-back-to-top {
+    display: none;
+    padding: 0;
+    border: 0;
+    appearance: none;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+#back-to-top.tv-back-to-top.is-visible { display: block; opacity: 1; }
+
+/* --- Lightbox (main.js builds it in place of magnific-popup) --------------- */
+.tv-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1090;
+    background: rgba(0, 0, 0, .9);
+    align-items: center;
+    justify-content: center;
+}
+.tv-lightbox.is-open { display: flex; }
+.tv-lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+}
+.tv-lightbox button {
+    position: absolute;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    padding: 10px 18px;
+    cursor: pointer;
+}
+.tv-lightbox button:hover,
+.tv-lightbox button:focus-visible { color: var(--tv-accent); }
+.tv-lb-close { top: 10px; right: 16px; font-size: 48px; }
+.tv-lb-prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.tv-lb-next { right: 10px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 575.98px) {
+    .tv-lightbox button { font-size: 30px; }
+    .tv-lb-close { font-size: 36px; }
+}
+
+/* --- The full-screen gallery (replaces fullPage.js) -------------------------
+   fullPage.js made each .section the height of the viewport, hid the body's
+   scrollbar, and moved the whole stack by one section per wheel notch.
+   CSS scroll-snap does the same: the stack is the scroll container, each
+   section is one viewport tall and snaps to the top. The dots on the right
+   are built by main.js in fullPage's own markup (#fp-nav), styled by
+   gallery.css. */
+body.tv-gallery-page { overflow: hidden; }
+#fullpage {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+}
+#fullpage::-webkit-scrollbar { display: none; }
+#fullpage > .section {
+    height: 100vh;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* --- The venue map --------------------------------------------------------
+   v1 drew it with the Maps JavaScript API and a key that shipped in the
+   page; v2 embeds the same place in an iframe. The box keeps v1's height. */
+.tv-map { min-height: 400px; }
+.tv-map iframe { display: block; width: 100%; height: 100%; }
+
+/* --- Footer copyright line ----------------------------------------------
+   The live demo's stylesheet carries these two rules for the backlink line
+   it added in 2021; the zip's does not. v2 ships the line, so it ships the
+   rules — with the demo's `font font-weight: 200` typo corrected. */
+.tv-copyright-text {
+    background: rgb(2 2 2 / 50%);
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+    padding: 15px 0 15px 0;
+}
+.tv-copyright-text a:hover { color: #fc4c4c; }
+
+/* --- The Bride / The Groomsman blocks -----------------------------------
+   v1 paints the 600px portrait absolutely at the block's edge under a
+   70% pink overlay, and the text column starts INSIDE that 600px at every
+   desktop width from 1200 to about 2400 (391px in at 1536). The portrait
+   comes first in the DOM and is positioned, so it paints OVER the text: the
+   first half of every line sits under the tinted photograph and reads as
+   faded. Invisible in the zip, whose placeholder portrait is a blur;
+   plain on the demo and in the owner's review ("text is not visible
+   fully"). The text belongs on top of the decorative portrait. */
+#tv-bride-block .tv-bride-info, #tv-groomsman-block .tv-bride-info { position: relative; z-index: 1; }

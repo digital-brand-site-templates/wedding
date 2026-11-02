@@ -1,4 +1,34 @@
 {
   "category": "wedding",
-  "templates": []
+  "templates": [
+    {
+      "name": "Wedd-call",
+      "folder": "wedd-call",
+      "version": "1.0.0",
+      "description": "Wedd-call \u2013 static HTML/Bootstrap Wedding website template.",
+      "idealFor": [
+        "wedding websites",
+        "RSVP pages",
+        "couples"
+      ],
+      "requiredClientInputs": [
+        "coupleNames",
+        "weddingDate",
+        "venue",
+        "events",
+        "photos",
+        "rsvpEmail",
+        "registryLinks"
+      ],
+      "preview": "wedd-call/preview.png",
+      "orderNumber": "TVORD47431639",
+      "license": {
+        "templateOrderAmount": 0.0,
+        "creditRemovalPermitted": true,
+        "accountLicense": [
+          "TVORD30331596 Pro \u2014 Lifetime"
+        ]
+      }
+    }
+  ]
 }
